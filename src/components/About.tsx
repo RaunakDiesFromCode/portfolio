@@ -25,7 +25,7 @@ const About = () => {
   }, [theme]);
 
   return (
-    <div className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-background ">
+    <div className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden">
       <div className="z-50">
         <HeroText
           text="About me"
