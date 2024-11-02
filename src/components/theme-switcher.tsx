@@ -7,7 +7,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Button } from "./ui/button";
 import { useTheme } from "next-themes";
 
-const Navbar = () => {
+const Switcher = () => {
 
   const { setTheme } = useTheme()
   
@@ -37,4 +37,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Switcher;

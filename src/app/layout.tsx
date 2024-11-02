@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
+import Switcher from "@/components/theme-switcher";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,11 +22,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <nav>
-            <Navbar />
+          <nav className="fixed top-0 left-0 right-0 z-50 p-4">
+            <Switcher />
           </nav>
-          <main>{children}</main>
-          <footer></footer>
+          <main className="pt-3">{children}</main>
+          <footer className="py-4">
+            {/* Footer content goes here */}
+          </footer>
         </ThemeProvider>
       </body>
     </html>
