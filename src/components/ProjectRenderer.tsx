@@ -9,12 +9,13 @@ import {
   CardTitle,
 } from "./ui/card";
 import { Button } from "./ui/button";
-import { ProjectProps } from "@/lib/types";
+import { Project } from "@/lib/types";
 
-const ProjectRenderer: React.FC<ProjectProps> = ({
+const ProjectRenderer: React.FC<Project> = ({
   name,
   description,
   html_url,
+  homepage,
 }) => {
   return (
     <Card className=" transition-transform transform hover:scale-105 duration-200 w-[90vh] my-2">
@@ -23,8 +24,8 @@ const ProjectRenderer: React.FC<ProjectProps> = ({
           <CardTitle className="text-xl font-bold">
             <div>{name}</div>
           </CardTitle>
-          <CardDescription>
-            <Button>
+          <CardDescription className="flex items-center gap-2">
+            <Button asChild>
               <a
                 href={html_url}
                 target="_blank"
@@ -34,6 +35,18 @@ const ProjectRenderer: React.FC<ProjectProps> = ({
                 View Project
               </a>
             </Button>
+            {homepage && (
+              <Button asChild>
+                <a
+                  href={homepage}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-fit"
+                >
+                  View Live
+                </a>
+              </Button>
+            )}
           </CardDescription>
         </CardHeader>
 

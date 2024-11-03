@@ -1,6 +1,7 @@
 // src/hooks/useGitHubAllProjects.ts
 
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 interface Project {
   id: number;
@@ -12,28 +13,32 @@ interface Project {
 const useGitHubAllProjects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const GITHUB_TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN; // Ensure this is set in .env.local
+  const GITHUB_TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
 
   useEffect(() => {
     const fetchAllProjects = async () => {
       try {
-        const response = await fetch("https://api.github.com/user/repos", {
-          headers: {
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
-          },
-        });
+        const response = await axios.get(
+          "https://api.github.com/user/repos?visibility=public",
+          {
+            headers: {
+              Authorization: `Bearer ${GITHUB_TOKEN}`,
+            },
+          }
+        );
 
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status} ${response.statusText}`);
-        }
-
-        const data = await response.json();
-        setProjects(data);
+        setProjects(response.data);
       } catch (err) {
-        if (err instanceof Error) {
+        if (axios.isAxiosError(err)) {
+          setError(
+            `Error: ${err.response?.status} ${
+              err.response?.statusText || "Unknown error"
+            }`
+          );
+        } else if (err instanceof Error) {
           setError(err.message);
         } else {
-          setError(String(err));
+          setError("An unexpected error occurred");
         }
       }
     };

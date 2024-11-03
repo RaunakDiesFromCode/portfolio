@@ -12,7 +12,7 @@ import {
   CardTitle,
 } from "./ui/card";
 import Image from "next/image";
-import { Twitter, Github, Linkedin, Mail, Instagram } from "lucide-react";
+import { Twitter, Github, Linkedin, Mail, Instagram, Facebook } from "lucide-react";
 import { Button } from "./ui/button";
 
 const About = () => {
@@ -64,7 +64,7 @@ const About = () => {
             <Card className="w-[350px] p-3 shadow-md flex justify-center h-[70px]">
               <ul className="flex gap-2 items-center">
                 <li>
-                  <Button variant="outline">
+                  <Button variant="outline" asChild size="icon">
                     <a
                       href="https://github.com/RaunakDiesFromCode"
                       target="_blank"
@@ -74,7 +74,7 @@ const About = () => {
                   </Button>
                 </li>
                 <li>
-                  <Button variant="outline" asChild>
+                  <Button variant="outline" asChild size="icon">
                     <a
                       href="https://www.linkedin.com/in/raunak-manna/"
                       target="_blank"
@@ -84,14 +84,14 @@ const About = () => {
                   </Button>
                 </li>
                 <li>
-                  <Button variant="outline" asChild>
+                  <Button variant="outline" asChild size="icon">
                     <a href="https://x.com/RaunakM298742" target="_blank">
                       <Twitter />
                     </a>
                   </Button>
                 </li>
                 <li>
-                  <Button variant="outline" asChild>
+                  <Button variant="outline" asChild size="icon">
                     <a
                       href="https://www.instagram.com/raunakisannoying/"
                       target="_blank"
@@ -101,12 +101,22 @@ const About = () => {
                   </Button>
                 </li>
                 <li>
-                  <Button variant="outline" asChild>
+                  <Button variant="outline" asChild size="icon">
                     <a
                       href="mailto:raunakmanna43@gmail.com&subject=I%20saw%20your%20portfolio"
                       target="_blank"
                     >
                       <Mail />
+                    </a>
+                  </Button>
+                </li>
+                <li>
+                  <Button variant="outline" asChild size="icon">
+                    <a
+                      href="mailto:raunakmanna43@gmail.com&subject=I%20saw%20your%20portfolio"
+                      target="_blank"
+                    >
+                      <Facebook />
                     </a>
                   </Button>
                 </li>

@@ -1,8 +1,8 @@
-// src/hooks/useGitHubStarredProjects.ts:
+// src/hooks/useGitHubStarredProjects.ts
 
 import { Project } from "@/lib/types";
+import axios from "axios";
 import { useEffect, useState } from "react";
-
 
 const useGitHubStarredProjects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -12,23 +12,28 @@ const useGitHubStarredProjects = () => {
   useEffect(() => {
     const fetchStarredProjects = async () => {
       try {
-        const response = await fetch("https://api.github.com/user/starred", {
-          headers: {
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
-          },
-        });
+        const response = await axios.get(
+          "https://api.github.com/user/starred?visibility=public",
+          {
+            headers: {
+              Authorization: `Bearer ${GITHUB_TOKEN}`,
+            },
+          }
+        );
 
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status} ${response.statusText}`);
-        }
-
-        const data = await response.json();
-        setProjects(data);
+        setProjects(response.data);
       } catch (err) {
-        if (err instanceof Error) {
+        if (axios.isAxiosError(err)) {
+          setError(
+            `Error: ${err.response?.status} ${
+              err.response?.statusText || "Unknown error"
+            }`
+          );
+        } else if (err instanceof Error) {
+          // Handle general JavaScript errors
           setError(err.message);
         } else {
-          setError(String(err));
+          setError("An unexpected error occurred");
         }
       }
     };
