@@ -20,7 +20,7 @@ const About = () => {
   const [color, setColor] = useState("#ffffff");
 
   useEffect(() => {
-    setColor(theme === "dark" ? "#ffffff" : "#000000");
+    setColor(theme === "dark" ? "#bg-foreground" : "bg-background");
   }, [theme]);
 
   return (
