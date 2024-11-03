@@ -57,7 +57,7 @@ const About = () => {
                 alt="me"
                 height={1000}
                 width={1000}
-                className="rounded"
+                className="rounded-[5px]"
               />
             </Card>
 
