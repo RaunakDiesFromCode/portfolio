@@ -43,11 +43,11 @@ const reviews = [
     username: "@rix_04turtle",
     body: "This guys codes as sharp as his jokes",
   },
-  // {
-  //   name: "Bristi",
-  //   username: "@sen_bristi_",
-  //   body: "Few people can do this. He is one of them.",
-  // },
+  {
+    name: "Bristi",
+    username: "@sen_bristi_",
+    body: "He designes are so good, it makes the internet look bad.",
+  },
 ];
 
 // Helper function to shuffle the reviews array
