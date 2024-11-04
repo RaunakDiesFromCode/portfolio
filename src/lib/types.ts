@@ -5,3 +5,9 @@ export interface Project {
   html_url: string;
   homepage?: string;
 }
+
+export interface Review {
+  name: string;
+  username: string;
+  body: string;
+}
