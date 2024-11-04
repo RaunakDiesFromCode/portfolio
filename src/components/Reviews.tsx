@@ -38,11 +38,11 @@ const reviews = [
     username: "@swarnabha19",
     body: "Few people can do this. He is one of them.",
   },
-  // {
-  //   name: "Rishita",
-  //   username: "@rix_04turtle",
-  //   body: "Few people can do this. He is one of them.",
-  // },
+  {
+    name: "Rishita",
+    username: "@rix_04turtle",
+    body: "This guys codes as sharp as his jokes",
+  },
   // {
   //   name: "Bristi",
   //   username: "@sen_bristi_",
