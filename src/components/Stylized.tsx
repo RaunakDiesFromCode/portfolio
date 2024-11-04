@@ -18,7 +18,7 @@ const Stylized = () => {
           <span className={`text-3xl pl-2 ${subheading.className}`}>
             Hi from
           </span>
-          <HeroText text="Raunak" className="text-9xl p-0" />
+          <HeroText text="Raunak" className=" p-0" />
         </div>
         <div className="pb-1">
           <Mouse />

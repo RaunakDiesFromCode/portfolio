@@ -24,16 +24,17 @@ const About = () => {
   }, [theme]);
 
   return (
-    <div className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden">
-      <div className="z-50">
+    <div className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden mt-20 md:mt-0">
+      <div className="z-20">
         <HeroText
           text="About me"
-          className="pointer-events-none mb-3 whitespace-pre-wrap bg-foreground bg-clip-text text-center text-8xl font-bold leading-none text-transparent"
+          className="pointer-events-none mb-3 whitespace-pre-wrap bg-foreground bg-clip-text text-center font-bold leading-none text-transparent"
         />
 
-        <div className="flex gap-3 w-full items-center justify-center">
+        <div className="flex md:flex-row flex-col gap-3 w-full items-center justify-center px-2 md:px-0">
           <div className="h-full flex flex-col gap-3">
-            <Card className="w-[380px] shadow-md">
+
+            <Card className="md:w-[380px] shadow-md">
               <CardHeader>
                 <CardTitle className="font-bold text-3xl">
                   I am Raunak
@@ -48,10 +49,12 @@ const About = () => {
                 }
               </CardContent>
             </Card>
+
           </div>
 
           <div className="h-full flex flex-col gap-3">
-            <Card className="w-[350px] p-3 shadow-md">
+
+            <Card className="md:w-[350px] p-3 shadow-md">
               <Image
                 src={"/me.jpg"}
                 alt="me"
@@ -61,7 +64,7 @@ const About = () => {
               />
             </Card>
 
-            <Card className="w-[350px] p-3 shadow-md flex justify-center h-[70px]">
+            <Card className="md:w-[350px] p-3 shadow-md flex justify-center h-[70px]">
               <ul className="flex gap-2 items-center">
                 <li>
                   <Button variant="outline" asChild size="icon">
@@ -122,6 +125,7 @@ const About = () => {
                 </li>
               </ul>
             </Card>
+
           </div>
         </div>
       </div>

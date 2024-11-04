@@ -18,7 +18,7 @@ const Projects = () => {
     <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden pt-24">
       <HeroText
         text="What I've done"
-        className="pointer-events-none mb-3 whitespace-pre-wrap bg-foreground bg-clip-text text-center text-8xl font-bold leading-none text-transparent"
+        className="pointer-events-none mb-3 whitespace-pre-wrap bg-foreground bg-clip-text text-center text-4xl md:text-9xl font-bold leading-none text-transparent"
       />
       <div className="">
         {projects.slice(0, 4).map(

@@ -11,7 +11,14 @@ interface HeroTextProps {
 const HeroText: React.FC<HeroTextProps> = ({ text, className }) => {
   return (
     <div className="">
-      <GradualSpacing text={text} className={cn("font-bold text-4xl", className, hero.className)} />
+      <GradualSpacing
+        text={text}
+        className={cn(
+          "font-bold text-6xl md:text-9xl text-center truncate", // Responsive font sizes
+          className,
+          hero.className
+        )}
+      />
     </div>
   );
 };
