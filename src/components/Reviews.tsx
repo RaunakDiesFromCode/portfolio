@@ -50,9 +50,20 @@ const reviews = [
   // },
 ];
 
-const firstRow = reviews.slice(0, reviews.length / 2);
-const secondRow = reviews.slice(reviews.length / 2);
+// Helper function to shuffle the reviews array
+function shuffleArray(array: { name: string; username: string; body: string }[]) {
+  const shuffled = array.slice(); // Create a copy to avoid modifying the original array
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
 
+// Shuffle and split the reviews into two rows
+const shuffledReviews = shuffleArray(reviews);
+const firstRow = shuffledReviews.slice(0, Math.ceil(shuffledReviews.length / 2));
+const secondRow = shuffledReviews.slice(Math.ceil(shuffledReviews.length / 2));
 
 export function MarqueeDemo() {
   return (
