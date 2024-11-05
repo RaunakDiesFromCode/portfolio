@@ -10,9 +10,11 @@ const page = () => {
   return (
     <div>
       <Stylized />
-      <About />
-      <Projects />
-      <MarqueeDemo />
+      <div className="flex flex-col items-center">
+        <About />
+        <Projects />
+        <MarqueeDemo />
+      </div>
     </div>
   );
 };

@@ -20,11 +20,11 @@ const About = () => {
   const [color, setColor] = useState("#ffffff");
 
   useEffect(() => {
-    setColor(theme === "dark" ? "#bg-foreground" : "bg-background");
+    setColor(theme === "dark" ? "#ffffff" : "#000000");
   }, [theme]);
 
   return (
-    <div className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden mt-20 md:mt-0">
+    <div className="relative flex md:h-screen md:w-full w-[80vw] flex-col items-center justify-center overflow-hidden mt-20 md:mt-0">
       <div className="z-20">
         <HeroText
           text="About me"
@@ -33,7 +33,6 @@ const About = () => {
 
         <div className="flex md:flex-row flex-col gap-3 w-full items-center justify-center px-2 md:px-0">
           <div className="h-full flex flex-col gap-3">
-
             <Card className="md:w-[380px] shadow-md">
               <CardHeader>
                 <CardTitle className="font-bold text-3xl">
@@ -49,11 +48,9 @@ const About = () => {
                 }
               </CardContent>
             </Card>
-
           </div>
 
           <div className="h-full flex flex-col gap-3">
-
             <Card className="md:w-[350px] p-3 shadow-md">
               <Image
                 src={"/me.jpg"}
@@ -131,8 +128,8 @@ const About = () => {
       </div>
 
       <Particles
-        className="absolute inset-0"
-        quantity={100}
+        className="absolute inset-0 "
+        quantity={400}
         ease={80}
         color={color}
         refresh

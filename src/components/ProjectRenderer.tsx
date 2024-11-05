@@ -18,7 +18,7 @@ const ProjectRenderer: React.FC<Project> = ({
   homepage,
 }) => {
   return (
-    <Card className=" transition-transform transform hover:scale-105 duration-200 w-[90vw] my-2">
+    <Card className=" transition-transform transform hover:scale-105 duration-200 w-[80vw] my-2">
       <div className="flex items-center flex-col md:flex-row">
         <CardHeader className="flex flex-col md:items-start gap-2 w-full">
           <CardTitle className="text-xl font-bold">
