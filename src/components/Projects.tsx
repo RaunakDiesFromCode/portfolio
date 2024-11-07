@@ -8,6 +8,7 @@ import ProjectRenderer from "./ProjectRenderer";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { Undo } from "lucide-react";
+import { codeFont } from "@/app/fonts";
 
 const Projects = () => {
   const { projects, error } = useGitHubStarredProjects();
@@ -29,7 +30,11 @@ const Projects = () => {
           )
         )}
       </div>
-      <Button variant={"outline"} className="mt-4" asChild>
+      <Button
+        variant={"outline"}
+        className={`mt-4 ${codeFont.className}`}
+        asChild
+      >
         <Link href="/projects">
           View All Projects{" "}
           <span className="rotate-[115deg]">

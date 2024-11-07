@@ -1,6 +1,7 @@
 import Marquee from "./ui/marquee";
 import ReviewCard from "./ReviewCard";
 import HeroText from "./HeroText";
+import { highlightFont } from "@/app/fonts";
 
 const reviews = [
   {
@@ -29,7 +30,7 @@ const reviews = [
     body: "Aughhhhh. :)",
   },
   {
-    name: "A prowd client",
+    name: "A proud client",
     username: "@raunakisannoying",
     body: "This guy is a genius. I love him.",
   },
@@ -46,7 +47,7 @@ const reviews = [
   {
     name: "Bristi",
     username: "@sen_bristi_",
-    body: "He designes are so good, it makes the internet look bad.",
+    body: "His designs are so good, it makes the internet look bad.",
   },
 ];
 
@@ -77,7 +78,7 @@ export function MarqueeDemo() {
         text="What they say..."
         className="pointer-events-none z-50 mb-3 whitespace-pre-wrap bg-foreground bg-clip-text text-center text-4xl md:text-9xl font-bold leading-none text-transparent"
       />
-      <div>
+      <div className={highlightFont.className}>
         <Marquee pauseOnHover className="[--duration:30s]">
           {firstRow.map((review) => (
             <ReviewCard key={review.username} {...review} />

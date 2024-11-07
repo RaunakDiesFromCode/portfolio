@@ -1,7 +1,7 @@
 import React from "react";
 import GradualSpacing from "./ui/gradual-spacing";
 import { cn } from "@/lib/utils";
-import { hero } from "@/app/fonts";
+import { heroFont } from "@/app/fonts";
 
 interface HeroTextProps {
   text: string;
@@ -16,7 +16,7 @@ const HeroText: React.FC<HeroTextProps> = ({ text, className }) => {
         className={cn(
           "font-bold text-6xl md:text-9xl text-center truncate", // Responsive font sizes
           className,
-          hero.className
+          heroFont.className
         )}
       />
     </div>

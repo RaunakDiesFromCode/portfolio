@@ -3,7 +3,7 @@ import HeroText from "@/components/HeroText";
 import TextReveal from "@/components/ui/text-reveal";
 import { Mouse } from "lucide-react";
 import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
-import { subheading } from "@/app/fonts";
+import { codeFont, highlightFont} from "@/app/fonts";
 
 const skills =
   "Web Android NextJS ReactJS CSS HTML5 NodeJS Prisma Postgres UI/UX Tailwind Typescript Javascript Java C C++ Python ML DSA Firebase DJango ".split(
@@ -15,7 +15,7 @@ const Stylized = () => {
     <div>
       <div className="w-screen h-[90vh] flex flex-col items-center justify-between">
         <div className="text-left flex-grow flex flex-col items-center justify-center">
-          <span className={`text-3xl pl-2 ${subheading.className}`}>
+          <span className={`text-3xl pl-2 ${codeFont.className}`}>
             Hi from
           </span>
           <HeroText text="Raunak" className=" p-0" />
@@ -35,12 +35,12 @@ const Stylized = () => {
         <VelocityScroll
           text={skills.sort(() => Math.random() - 0.5).join(" ")}
           default_velocity={1}
-          className="font-display text-center text-4xl font-bold tracking-[-0.02em] text-black drop-shadow-sm dark:text-white md:text-7xl md:leading-[5rem]"
+          className={`font-display text-center text-4xl font-bold tracking-[-0.02em] text-black drop-shadow-sm dark:text-white md:text-7xl md:leading-[5rem] ${highlightFont.className}`}
         />
         <VelocityScroll
           text={skills.sort(() => Math.random() - 0.5).join(" ")}
           default_velocity={1}
-          className={`font-display text-center text-4xl italic font-bold tracking-[-0.02em] text-black drop-shadow-sm dark:text-white md:text-7xl md:leading-[5rem] ${subheading.className}`}
+          className={`font-display text-center text-4xl italic font-bold tracking-[-0.02em] text-black drop-shadow-sm dark:text-white md:text-7xl md:leading-[5rem] ${codeFont.className}`}
         />
       </div>
     </div>

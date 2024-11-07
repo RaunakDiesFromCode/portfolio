@@ -10,9 +10,18 @@ const useGitHubStarredProjects = () => {
   const GITHUB_TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
 
   useEffect(() => {
-    const fetchStarredProjects = async () => {
+    const fetchUserAndStarredProjects = async () => {
       try {
-        const response = await axios.get(
+        // Fetch authenticated user details
+        const userResponse = await axios.get("https://api.github.com/user", {
+          headers: {
+            Authorization: `Bearer ${GITHUB_TOKEN}`,
+          },
+        });
+        const username = userResponse.data.login;
+
+        // Fetch starred repositories
+        const reposResponse = await axios.get(
           "https://api.github.com/user/starred?visibility=public",
           {
             headers: {
@@ -21,7 +30,12 @@ const useGitHubStarredProjects = () => {
           }
         );
 
-        setProjects(response.data);
+        // Filter only repositories owned by the authenticated user
+        const ownedRepos = reposResponse.data.filter(
+          (repo: { owner: { login: string } }) => repo.owner.login === username
+        );
+
+        setProjects(ownedRepos);
       } catch (err) {
         if (axios.isAxiosError(err)) {
           setError(
@@ -30,7 +44,6 @@ const useGitHubStarredProjects = () => {
             }`
           );
         } else if (err instanceof Error) {
-          // Handle general JavaScript errors
           setError(err.message);
         } else {
           setError("An unexpected error occurred");
@@ -38,7 +51,7 @@ const useGitHubStarredProjects = () => {
       }
     };
 
-    fetchStarredProjects();
+    fetchUserAndStarredProjects();
   }, [GITHUB_TOKEN]);
 
   return { projects, error };

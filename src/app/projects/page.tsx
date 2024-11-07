@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/pagination"; // Import Pagination components
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { highlightFont } from "../fonts";
 
 const ProjectsPage = () => {
   const { projects, error } = useGitHubAllProjects(); // Fetch all projects
@@ -38,10 +39,10 @@ const ProjectsPage = () => {
   };
 
   return (
-    <div className="min-h-[90vh] p-8 flex flex-col items-center">
+    <div className={`min-h-[90vh] p-8 flex flex-col items-center ${highlightFont.className}`}>
       <HeroText
         text="All My Projects"
-        className="mb-6 text-center text-4xl font-bold"
+        className="mb-6 text-center text-4xl font-bold md:text-5xl"
       />
       <div className="">
         {currentProjects.length > 0 ? (
@@ -51,16 +52,17 @@ const ProjectsPage = () => {
         ) : (
           <div>
             {Array.from({ length: 4 }, (_, index) => (
-              <Card className=" transition-transform transform hover:scale-105 duration-200 w-[90vh] my-2" key={index}>
+              <Card
+                className=" transition-transform transform hover:scale-105 duration-200 w-[90vh] my-2"
+                key={index}
+              >
                 <div className="flex items-center">
                   <CardHeader className="flex flex-col w-full">
                     <CardTitle className="text-xl font-bold">
                       <div>name</div>
                     </CardTitle>
                     <CardDescription>
-                      <Button>
-                          View Project
-                      </Button>
+                      <Button>View Project</Button>
                     </CardDescription>
                   </CardHeader>
 

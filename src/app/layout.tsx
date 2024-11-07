@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Switcher from "@/components/navbar";
+import { highlightFont } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Hi From Raunak",
@@ -15,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="">
+      <body className={highlightFont.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
