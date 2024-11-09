@@ -8,15 +8,14 @@ import {
 } from "./ui/card";
 import { Review } from "@/lib/types";
 
-
-const ReviewCard: React.FC<Review> = ({ name, username, body }) => {
+const ReviewCard: React.FC<Review> = ({ name, email, message }) => {
   return (
     <Card className="hover:bg-foreground/5 transition-all duration-100">
       <CardHeader>
         <CardTitle>{name}</CardTitle>
-        <CardDescription>{username}</CardDescription>
+        <CardDescription>{email}</CardDescription>
       </CardHeader>
-      <CardContent>{body}</CardContent>
+      <CardContent>{message}</CardContent>
     </Card>
   );
 };
