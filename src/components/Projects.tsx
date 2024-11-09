@@ -5,10 +5,7 @@ import React from "react";
 import HeroText from "./HeroText";
 import useGitHubStarredProjects from "@/hooks/useGitHubStarredProjects";
 import ProjectRenderer from "./ProjectRenderer";
-import { Button } from "./ui/button";
-import Link from "next/link";
-import { Undo } from "lucide-react";
-import { codeFont } from "@/app/fonts";
+import NewTabButton from "./NewTabButton";
 
 const Projects = () => {
   const { projects, error } = useGitHubStarredProjects();
@@ -30,18 +27,7 @@ const Projects = () => {
           )
         )}
       </div>
-      <Button
-        variant={"outline"}
-        className={`mt-4 ${codeFont.className}`}
-        asChild
-      >
-        <Link href="/projects">
-          View All Projects{" "}
-          <span className="rotate-[115deg]">
-            <Undo />{" "}
-          </span>
-        </Link>
-      </Button>
+      <NewTabButton text="View all projects" href="/projects"/>
     </div>
   );
 };

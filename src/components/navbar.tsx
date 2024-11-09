@@ -1,7 +1,7 @@
 "use client";
 
 import { Moon, Sun } from "lucide-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,10 +11,22 @@ import {
 import { useTheme } from "next-themes";
 import { Twitter, Github, Linkedin, Mail, Instagram } from "lucide-react";
 import { Button } from "./ui/button";
-
+import { format } from "date-fns";
 
 const Switcher = () => {
   const { setTheme } = useTheme();
+
+  const [currentTime, setCurrentTime] = useState("");
+
+  useEffect(() => {
+    // Update the time every second
+    const intervalId = setInterval(() => {
+      const now = new Date();
+      setCurrentTime(format(now, "PPpp")); // Example: Nov 9, 2024 at 7:45:00 PM
+    }, 1000);
+
+    return () => clearInterval(intervalId); // Cleanup on component unmount
+  }, []);
 
   return (
     <div className=" flex justify-between">
@@ -37,7 +49,11 @@ const Switcher = () => {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <Button variant="outline">Contact</Button>
+        {currentTime && (
+          <Button variant="outline" className="hidden md:block">
+            {currentTime.toLocaleString()}
+          </Button>
+        )}
       </div>
       <div>
         <ul className="flex gap-2 items-center">

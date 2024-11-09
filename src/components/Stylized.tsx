@@ -15,12 +15,10 @@ const Stylized = () => {
     <div>
       <div className="w-screen h-[90vh] flex flex-col items-center justify-between">
         <div className="text-left flex-grow flex flex-col items-center justify-center">
-          <span className={`text-3xl pl-2 ${codeFont.className}`}>
-            Hi from
-          </span>
+          <span className={`text-3xl pl-2 ${codeFont.className}`}>Hi from</span>
           <HeroText text="Raunak" className=" p-0" />
         </div>
-        <div className="pb-1">
+        <div className="pb-1 animate-jump">
           <Mouse />
         </div>
       </div>

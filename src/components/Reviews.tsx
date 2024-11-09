@@ -1,12 +1,11 @@
-"use client"
+"use client";
 import React from "react";
 import Marquee from "./ui/marquee";
 import ReviewCard from "./ReviewCard";
 import HeroText from "./HeroText";
-import { codeFont, highlightFont } from "@/app/fonts";
+import { highlightFont } from "@/app/fonts";
 import useGitHubAllProjects from "@/hooks/useReviews";
-import { Button } from "./ui/button";
-import Link from "next/link";
+import NewTabButton from "./NewTabButton";
 
 // Helper function to shuffle the reviews array
 function shuffleArray<T>(array: T[]): T[] {
@@ -67,11 +66,11 @@ export function MarqueeDemo() {
         <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-background"></div>
         <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-background"></div>
       </div>
-      <Button asChild variant="outline" className={codeFont.className}>
-        <Link href={"https://portfolio-backend-rdsn.onrender.com/"}>
-          Review me
-        </Link>
-      </Button>
+      <NewTabButton
+        text="Review me"
+        blank
+        href="https://portfolio-backend-rdsn.onrender.com/"
+      />
     </div>
   );
 }
