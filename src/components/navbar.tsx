@@ -39,11 +39,20 @@ const Switcher = () => {
               <span className="sr-only">Toggle theme</span>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="start" className="mt-1 bg-background">
-            <DropdownMenuItem onClick={() => setTheme("light")}>
+          <DropdownMenuContent
+            align="start"
+            className="mt-1 bg-background/30 backdrop-blur-sm"
+          >
+            <DropdownMenuItem
+              onClick={() => setTheme("light")}
+              className="rounded-b-[5px]"
+            >
               Light
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setTheme("dark")}>
+            <DropdownMenuItem
+              onClick={() => setTheme("dark")}
+              className="rounded-t-[5px]"
+            >
               Dark
             </DropdownMenuItem>
           </DropdownMenuContent>

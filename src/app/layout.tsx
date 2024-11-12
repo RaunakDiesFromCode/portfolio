@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Switcher from "@/components/navbar";
 import { highlightFont } from "./fonts";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "Hi From Raunak",
@@ -27,7 +28,7 @@ export default function RootLayout({
             <Switcher />
           </nav>
           <main className="pt-3">{children}</main>
-          <footer className="py-4">{/* Footer content goes here */}</footer>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
