@@ -2,19 +2,13 @@
 
 import { Moon, Sun } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
 import { useTheme } from "next-themes";
 import { Twitter, Github, Linkedin, Mail, Instagram } from "lucide-react";
 import { Button } from "./ui/button";
 import { format } from "date-fns";
 
 const Switcher = () => {
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   const [currentTime, setCurrentTime] = useState("");
 
@@ -31,32 +25,15 @@ const Switcher = () => {
   return (
     <div className=" flex justify-between">
       <div className="flex gap-2 items-center">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" size="icon">
-              <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
-            align="start"
-            className="mt-1 bg-background/30 backdrop-blur-sm"
-          >
-            <DropdownMenuItem
-              onClick={() => setTheme("light")}
-              className="rounded-b-[5px]"
-            >
-              Light
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => setTheme("dark")}
-              className="rounded-t-[5px]"
-            >
-              Dark
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+        >
+          <Sun className="h-[1.5rem] w-[1.3rem] dark:hidden" />
+          <Moon className="hidden h-5 w-5 dark:block" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
 
         {currentTime && (
           <Button variant="outline" className="hidden md:block">

@@ -7,6 +7,63 @@ import { highlightFont } from "@/app/fonts";
 import useGitHubAllProjects from "@/hooks/useReviews";
 import NewTabButton from "./NewTabButton";
 
+const OfflineReviews = [
+  {
+    id: 1,
+    name: "Sagnik",
+    email: "@sagnifyofficial",
+    message: "I can do this in DJang too. Lame.",
+  },
+  {
+    id: 2,
+    name: "Tautik",
+    email: "@tautik_sinha",
+    message: "You guys will have less jobs. ChatGPT can do this.",
+  },
+  {
+    id: 3,
+    name: "Swagnik",
+    email: "@swagnikganguly",
+    message: "Looks decent.",
+  },
+  {
+    id: 4,
+    name: "Sneha",
+    email: "@susneha",
+    message: "I was paid to say this. But I love it.",
+  },
+  {
+    id: 5,
+    name: "Aishwarik",
+    email: "@yeaok.itsmee",
+    message: "Aughhhhh. :)",
+  },
+  {
+    id: 6,
+    name: "A prowd client",
+    email: "@raunakisannoying",
+    message: "This guy is a genius. I love him.",
+  },
+  {
+    id: 7,
+    name: "Swarnabha",
+    email: "@swarnabha19",
+    message: "Few people can do this. He is one of them.",
+  },
+  {
+    id: 8,
+    name: "Rishita",
+    email: "@rix_04turtle",
+    message: "This guys codes as sharp as his jokes",
+  },
+  {
+    id: 9,
+    name: "Bristi",
+    email: "@sen_bristi_",
+    message: "He designes are so good, it makes the internet look bad.",
+  },
+];
+
 // Helper function to shuffle the reviews array
 function shuffleArray<T>(array: T[]): T[] {
   const shuffled = array.slice(); // Create a copy to avoid modifying the original array
@@ -20,24 +77,14 @@ function shuffleArray<T>(array: T[]): T[] {
 export function MarqueeDemo() {
   const { projects: reviews, error } = useGitHubAllProjects();
 
-  if (error) {
-    return (
-      <div className="flex items-center justify-center h-screen text-red-500">
-        {error}
-      </div>
-    );
-  }
+  // Determine whether to use offline reviews
+  const isOffline = !reviews || error || reviews.length === 0;
 
-  if (reviews.length === 0) {
-    return (
-      <div className="flex items-center justify-center h-screen text-gray-500">
-        Loading reviews...
-      </div>
-    );
-  }
+  // Use offline reviews when offline
+  const displayReviews = isOffline ? OfflineReviews : reviews;
 
   // Shuffle and split the reviews into two rows
-  const shuffledReviews = shuffleArray(reviews);
+  const shuffledReviews = shuffleArray(displayReviews);
   const firstRow = shuffledReviews.slice(
     0,
     Math.ceil(shuffledReviews.length / 2)
@@ -54,13 +101,19 @@ export function MarqueeDemo() {
       />
       <div className={highlightFont.className}>
         <Marquee pauseOnHover className="[--duration:30s]">
-          {firstRow.map((review) => (
-            <ReviewCard key={review.id} {...review} />
+          {firstRow.map((review, index) => (
+            <ReviewCard
+              key={review.id || index} // Fallback to index for offline reviews
+              {...review}
+            />
           ))}
         </Marquee>
         <Marquee reverse pauseOnHover className="[--duration:30s]">
-          {secondRow.map((review) => (
-            <ReviewCard key={review.id} {...review} />
+          {secondRow.map((review, index) => (
+            <ReviewCard
+              key={review.id || index} // Fallback to index for offline reviews
+              {...review}
+            />
           ))}
         </Marquee>
         <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-background"></div>
@@ -74,3 +127,4 @@ export function MarqueeDemo() {
     </div>
   );
 }
+
