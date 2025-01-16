@@ -5,10 +5,12 @@ import About from "@/components/About";
 import Stylized from "@/components/Stylized";
 import Projects from "@/components/Projects";
 import { MarqueeDemo } from "@/components/Reviews";
+import ScrollProgress from "@/components/ui/scroll-progress";
 
 const page = () => {
   return (
     <div>
+      <ScrollProgress/>
       <Stylized />
       <div className="flex flex-col items-center">
         <About />

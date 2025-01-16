@@ -5,7 +5,7 @@ import ReviewCard from "./ReviewCard";
 import HeroText from "./HeroText";
 import { highlightFont } from "@/app/fonts";
 import useGitHubAllProjects from "@/hooks/useReviews";
-import NewTabButton from "./NewTabButton";
+// import NewTabButton from "./NewTabButton";
 
 const OfflineReviews = [
   {
@@ -119,11 +119,11 @@ export function MarqueeDemo() {
         <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-background"></div>
         <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-background"></div>
       </div>
-      <NewTabButton
+      {/* <NewTabButton
         text="Review me"
         blank
         href="https://portfolio-backend-rdsn.onrender.com/"
-      />
+      /> */}
     </div>
   );
 }

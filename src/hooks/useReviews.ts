@@ -28,8 +28,10 @@ const useGitHubAllProjects = () => {
           );
         } else if (err instanceof Error) {
           setError(err.message);
+          console.error(err);
         } else {
           setError("An unexpected error occurred");
+          console.error(err);
         }
       }
     };
