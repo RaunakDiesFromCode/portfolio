@@ -19,7 +19,7 @@ export default function ScrollProgress({ className }: ScrollProgressProps) {
   return (
     <motion.div
       className={cn(
-        "fixed inset-x-0 bottom-0 rounded-r-full z-[1000] h-0.5 origin-left bg-[white]",
+        "fixed inset-x-0 bottom-0 rounded-r-full z-[1000] h-0.5 origin-left bg-foreground",
         className,
       )}
       style={{

@@ -31,11 +31,13 @@ const Footer = () => {
           <span className="text-cyan-400">.</span>
         </h1>
       </div>
-      <div
-        className="text-right p-0 m-0 pr-20 pb-5 cursor-pointer"
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      >
-        <span className={codeFont.className}>back to top</span>
+      <div className="text-right p-0 m-0 pr-20 pb-5 cursor-pointer">
+        <span
+          className={codeFont.className}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          back to top
+        </span>
       </div>
     </div>
   );
