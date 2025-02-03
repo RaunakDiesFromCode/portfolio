@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={highlightFont.className}>
-        <div className="vignette"></div>
+        {/* <div className="vignette"></div> */}
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

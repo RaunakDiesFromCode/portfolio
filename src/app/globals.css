@@ -13,7 +13,7 @@ html {
   overscroll-behavior: none;
 }
 
-.vignette {
+/* .vignette {
   position: fixed;
   top: 0;
   left: 0;
@@ -26,7 +26,7 @@ html {
   .vignette {
     box-shadow: 0 0 100px hsla(var(--foreground) / 0.2) inset;
   }
-}
+} */
 
 @layer base {
 

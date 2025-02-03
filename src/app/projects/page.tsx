@@ -14,6 +14,7 @@ import {
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { highlightFont } from "../fonts";
+import { useRouter } from "next/navigation";
 
 const ProjectsPage = () => {
   const { projects, error } = useGitHubAllProjects(); // Fetch all projects
@@ -38,8 +39,13 @@ const ProjectsPage = () => {
     setCurrentPage(pageNumber);
   };
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const router = useRouter();
+
   return (
-    <div className={`min-h-[90vh] p-8 flex flex-col items-center ${highlightFont.className}`}>
+    <div
+      className={`h-[98.5vh] p-8 flex flex-col items-center ${highlightFont.className}`}
+    >
       <HeroText
         text="All My Projects"
         className="mb-6 text-center text-4xl font-bold md:text-5xl"
@@ -108,6 +114,11 @@ const ProjectsPage = () => {
           </PaginationItem>
         </PaginationContent>
       </Pagination>
+
+      {/* Sticky Fixed Button */}
+      <Button className="fixed bottom-4 left-4" variant='outline' onClick={() => router.back()}>
+        Back
+      </Button>
     </div>
   );
 };
