@@ -7,8 +7,9 @@ export interface Project {
 }
 
 export interface Review {
-  id: number;
+  id: string;
   name: string;
-  email: string;
-  message: string;
+  contact: string;
+  review: string;
+  rating: number;
 }
