@@ -6,12 +6,12 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="text-center cursor-default">
+    <div className="text-center cursor-default bg-foreground text-background">
       <hr />
       <div className="text-foreground/60 mt-10 flex items-center justify-center">
-        <h1 className="text-xl">
+        <h1 className="text-xl text-background">
           Made with
-          <span className="hover:text-red-500 transition-colors duration-150">
+          <span className="hover:text-red-500 transition-colors duration-150 font-bold">
             {" "}
             ♡{" "}
           </span>

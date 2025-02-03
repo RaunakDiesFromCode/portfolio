@@ -5,6 +5,7 @@ import ReviewCard from "./ReviewCard";
 import HeroText from "./HeroText";
 import { highlightFont } from "@/app/fonts";
 import useGitHubAllProjects from "@/hooks/useReviews";
+import { ReviewDialog } from "./ReviewForm";
 // import NewTabButton from "./NewTabButton";
 
 const OfflineReviews = [
@@ -97,7 +98,7 @@ export function MarqueeDemo() {
     <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden pt-24">
       <HeroText
         text="What they say..."
-        className="pointer-events-none z-50 mb-3 whitespace-pre-wrap bg-foreground bg-clip-text text-center text-4xl md:text-9xl font-bold leading-none text-transparent"
+        className="pointer-events-none z-50 mb-3 pb-8 whitespace-pre-wrap bg-foreground bg-clip-text text-center text-4xl md:text-9xl font-bold leading-none text-transparent"
       />
       <div className={highlightFont.className}>
         <Marquee pauseOnHover className="[--duration:30s]">
@@ -119,12 +120,7 @@ export function MarqueeDemo() {
         <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-background"></div>
         <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-background"></div>
       </div>
-      {/* <NewTabButton
-        text="Review me"
-        blank
-        href="https://portfolio-backend-rdsn.onrender.com/"
-      /> */}
+      <ReviewDialog />
     </div>
   );
 }
-
