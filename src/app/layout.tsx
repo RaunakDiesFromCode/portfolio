@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import Switcher from "@/components/navbar";
 import { highlightFont } from "./fonts";
 import Footer from "@/components/footer";
-import { toast, Toaster } from "sonner";
+import { Toaster } from "sonner";
+import Navbar from "@/components/navbar";
 
 export const metadata: Metadata = {
   title: "Hi From Raunak",
@@ -19,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={highlightFont.className}>
+        <div className="vignette"></div>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -26,12 +27,12 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <nav className="fixed top-0 left-0 right-0 z-50 p-4">
-            <Switcher />
+            <Navbar />
           </nav>
           <main className="pt-3">{children}</main>
           <Footer />
         </ThemeProvider>
-        <Toaster theme="dark"/>
+        <Toaster theme="dark" />
       </body>
     </html>
   );

@@ -7,7 +7,7 @@ import { Twitter, Github, Linkedin, Mail, Instagram } from "lucide-react";
 import { Button } from "./ui/button";
 import { format } from "date-fns";
 
-const Switcher = () => {
+const Navbar = () => {
   const { theme, setTheme } = useTheme();
 
   const [currentTime, setCurrentTime] = useState("");
@@ -93,4 +93,4 @@ const Switcher = () => {
   );
 };
 
-export default Switcher;
+export default Navbar;
