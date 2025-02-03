@@ -78,7 +78,7 @@ export function ReviewDialog() {
         });
       }
     } catch (err) {
-      setError("An unexpected error occurred.");
+      setError("An unexpected error occurred."+err);
       toast.error("Unexpected error", {
         description: "Something went wrong. Please try again.",
       });

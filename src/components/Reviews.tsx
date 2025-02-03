@@ -86,10 +86,10 @@ export function MarqueeDemo() {
         // Ensure each review has an ID
         const apiReviews: Review[] = data
           .filter(
-            (r: any) =>
+            (r: Review) =>
               r.name && r.contact && r.review && typeof r.rating === "number"
           )
-          .map((r: any) => ({
+          .map((r: Review) => ({
             id: r.id || `api-${crypto.randomUUID()}`,
             name: r.name,
             contact: r.contact,
