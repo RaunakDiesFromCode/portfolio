@@ -22,6 +22,12 @@ html {
   box-shadow: 0 0 200px hsla(var(--foreground) / 0.3) inset;
 }
 
+@media (max-width: 768px) {
+  .vignette {
+    box-shadow: 0 0 100px hsla(var(--foreground) / 0.2) inset;
+  }
+}
+
 @layer base {
 
   :root {

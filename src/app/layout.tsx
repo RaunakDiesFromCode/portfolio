@@ -5,6 +5,7 @@ import { highlightFont } from "./fonts";
 import Footer from "@/components/footer";
 import { Toaster } from "sonner";
 import Navbar from "@/components/navbar";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "Hi From Raunak",
@@ -33,6 +34,7 @@ export default function RootLayout({
           <Footer />
         </ThemeProvider>
         <Toaster theme="dark" />
+        <Analytics />
       </body>
     </html>
   );
