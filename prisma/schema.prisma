@@ -16,10 +16,10 @@ datasource db {
 model Review {
   id        String   @id @default(cuid())
   name      String
-  contact   String
+  contact   String   // Social handle (not nullable)
+  email     String?  // Optional email field
   review    String
   createdAt DateTime @default(now())
   rating    Int      // Star rating from 1 to 5
   newsletter Boolean // Whether the user opted in for the newsletter
 }
-
