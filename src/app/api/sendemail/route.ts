@@ -1,12 +1,10 @@
-// src/app/api/sendmail/route.ts
-
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import prisma from "@/lib/prisma"; // Assuming you're using Prisma for DB access
 
 const SMTP_SERVER_USERNAME = process.env.SMTP_SERVER_USERNAME!;
 const SMTP_SERVER_PASSWORD = process.env.SMTP_SERVER_PASSWORD!;
-const SITE_MAIL_RECEIVER = process.env.SITE_MAIL_RECIEVER!;
-// const SMTP_SERVER_HOST = process.env.SMTP_SERVER_HOST || "smtp.gmail.com";
+// const SITE_MAIL_RECEIVER = process.env.SITE_MAIL_RECIEVER!;
 
 const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -16,26 +14,37 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-export async function POST(req: NextRequest) {
+export async function POST() {
     try {
-        const body = await req.json();
-        const { subject, message, from } = body;
+        // Hardcoded subject and message
+        const subject = `Monthly Newsletter for ${new Date().toLocaleString(
+            "default",
+            { month: "long" }
+        )}`;
+        const message =
+            "This is the hardcoded message content that will be sent to all reviewers.";
 
-        if (!subject || !message || !from) {
-            return NextResponse.json(
-                { error: "Missing fields" },
-                { status: 400 }
-            );
-        }
+        // Fetch all reviews' emails (excluding nulls)
+        const reviews = await prisma.review.findMany({
+            where: {
+                email: { not: null }, // Ensure emails are not null
+            },
+            select: {
+                email: true, // Only fetch emails
+            },
+        });
+
+        const emailList = reviews.map((review) => review.email).join(", "); // Join emails with commas for BCC
 
         // Optional: verify transporter is ready
         await transporter.verify();
 
+        // Send the email via BCC
         const info = await transporter.sendMail({
-            from: from, // e.g., "raunak@hifromraunak.xyz"
-            to: SITE_MAIL_RECEIVER, // e.g., "raunakmanna11@gmail.com"
-            subject,
-            text: message,
+            from: `"Raunak" <raunak@hifromraunak.xyz>`, // Sender's name as "Raunak"
+            bcc: emailList, // BCC all the collected emails
+            subject, // Hardcoded subject
+            text: message, // Hardcoded message content
         });
 
         return NextResponse.json({
