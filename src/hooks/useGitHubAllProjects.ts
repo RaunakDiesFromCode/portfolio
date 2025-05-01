@@ -4,44 +4,43 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Project } from "@/lib/types";
 
-
 const useGitHubAllProjects = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const GITHUB_TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
+    const [projects, setProjects] = useState<Project[]>([]);
+    const [error, setError] = useState<string | null>(null);
+    const GITHUB_TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
 
-  useEffect(() => {
-    const fetchAllProjects = async () => {
-      try {
-        const response = await axios.get(
-          "https://api.github.com/user/repos?visibility=public",
-          {
-            headers: {
-              Authorization: `Bearer ${GITHUB_TOKEN}`,
-            },
-          }
-        );
+    async function fetchAllProjects() {
+        try {
+            const response = await axios.get(
+                "https://api.github.com/user/repos?visibility=public",
+                {
+                    headers: {
+                        Authorization: `Bearer ${GITHUB_TOKEN}`,
+                    },
+                }
+            );
 
-        setProjects(response.data);
-      } catch (err) {
-        if (axios.isAxiosError(err)) {
-          setError(
-            `Error: ${err.response?.status} ${
-              err.response?.statusText || "Unknown error"
-            }`
-          );
-        } else if (err instanceof Error) {
-          setError(err.message);
-        } else {
-          setError("An unexpected error occurred");
+            setProjects(response.data);
+        } catch (err) {
+            if (axios.isAxiosError(err)) {
+                setError(
+                    `Error: ${err.response?.status} ${
+                        err.response?.statusText || "Unknown error"
+                    }`
+                );
+            } else if (err instanceof Error) {
+                setError(err.message);
+            } else {
+                setError("An unexpected error occurred");
+            }
         }
-      }
-    };
+    }
 
-    fetchAllProjects();
-  }, [GITHUB_TOKEN]);
+    useEffect(() => {
+        fetchAllProjects();
+    }, [GITHUB_TOKEN]);
 
-  return { projects, error };
+    return { projects, error };
 };
 
 export default useGitHubAllProjects;
