@@ -1,6 +1,6 @@
 import { Project } from "@/lib/types";
 
-export default function getEmailTemplate(projects:Project[]) {
+export default function getEmailTemplate(projects: Project[]) {
     projects = Array.isArray(projects) ? projects : [];
 
     return `
@@ -36,7 +36,7 @@ export default function getEmailTemplate(projects:Project[]) {
         font-size: 24px !important;
         line-height: 1.2 !important;
     }
-     h2 {
+      h2 {
         font-size: 20px !important;
         line-height: 1.2 !important;
     }
@@ -90,20 +90,19 @@ export default function getEmailTemplate(projects:Project[]) {
             <td align="left" bgcolor="#f9f9f9" style="padding: 30px 30px; font-family: Arial, sans-serif; color: #333333; border-top: 1px solid #dddddd; border-bottom: 1px solid #dddddd;" class="section-padding mobile-padding">
               <h2 style="margin: 0 0 20px 0; font-size: 22px; line-height: 1.3; font-weight: bold;">Checkout My GitHub Repos</h2>
 
-              ${ projects.map((project: Project) => {
-           return (`
+              ${projects
+                  .map((project: Project) => {
+                      return `
               <p style="margin: 0 0 10px 0; font-size: 16px; line-height: 1.5;">
-                <strong style="font-size: 17px;"><a href="${project.html_url}" target="_blank" style="color: #007bff; text-decoration: none;">${project.name}</a></strong><br>
+                <strong style="font-size: 17px;"><a href="${
+                    project.html_url
+                }" target="_blank" style="color: #007bff; text-decoration: none;">${
+                          project.name
+                      }</a></strong><br>
                 ${project.description || "No description available."}
-                </p>`)}).join('')
-                }
-
-              <!-- Repo 1 -->
-              <p style="margin: 0 0 10px 0; font-size: 16px; line-height: 1.5;">
-                <strong style="font-size: 17px;"><a href="[Repo URL 1]" target="_blank" style="color: #007bff; text-decoration: none;">Project Title 1</a></strong><br>
-                A brief description of what this repository does.
-              </p>
-
+                </p>`;
+                  })
+                  .join("")}
             </td>
           </tr>
 
