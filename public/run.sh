@@ -13,15 +13,16 @@ OS="$(uname -s)"
 ARCH="$(uname -m)"
 
 if [ "$OS" = "Darwin" ] && [ "$ARCH" = "arm64" ]; then
-  URL="https://github.com/RaunakDiesFromCode/raunak-tui/releases/download/v1.0.0/raunak-tui-macos-arm64"
+  URL="https://github.com/<YOUR_USERNAME>/<YOUR_REPO>/releases/download/v1.0.0/raunak-tui-macos-arm64"
 elif [ "$OS" = "Darwin" ]; then
-  URL="https://github.com/RaunakDiesFromCode/raunak-tui/releases/download/v1.0.0/raunak-tui-macos-x86_64"
+  URL="https://github.com/<YOUR_USERNAME>/<YOUR_REPO>/releases/download/v1.0.0/raunak-tui-macos-x86_64"
 else
-  URL="https://github.com/RaunakDiesFromCode/raunak-tui/releases/download/v1.0.0/raunak-tui-linux-x86_64"
+  URL="https://github.com/<YOUR_USERNAME>/<YOUR_REPO>/releases/download/v1.0.0/raunak-tui-linux-x86_64"
 fi
 
 echo "Downloading temporary binary…"
 curl -fsSL "$URL" -o "$BIN"
 chmod +x "$BIN"
 
-"$BIN"
+# 🔑 THIS LINE FIXES IT
+exec </dev/tty >/dev/tty 2>/dev/tty "$BIN"
