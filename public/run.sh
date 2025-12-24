@@ -25,4 +25,5 @@ curl -fsSL "$URL" -o "$BIN"
 chmod +x "$BIN"
 
 # 🔑 THIS LINE FIXES IT
-exec </dev/tty >/dev/tty 2>/dev/tty "$BIN"
+script -q /dev/null "$BIN"
+
