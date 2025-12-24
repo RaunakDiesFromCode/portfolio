@@ -1,12 +1,11 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import prisma from "@/lib/prisma"; // Assuming you're using Prisma for DB access
+import { pool } from "@/lib/db";
 import fetchAllGithubProjects from "@/lib/fetchGithubProjects";
 import getEmailTemplate from "./emailTemplate";
 
 const SMTP_SERVER_USERNAME = process.env.SMTP_SERVER_USERNAME!;
 const SMTP_SERVER_PASSWORD = process.env.SMTP_SERVER_PASSWORD!;
-// const SITE_MAIL_RECEIVER = process.env.SITE_MAIL_RECIEVER!;
 
 const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -16,52 +15,38 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-
 export async function POST() {
-
     try {
-        // Hardcoded subject and message
+        /* ---------------- Subject & fallback text ---------------- */
         const subject = `Monthly Newsletter for ${new Date().toLocaleString(
             "default",
             { month: "long" }
         )}`;
+
         const message =
             "This is the hardcoded message content that will be sent to all reviewers.";
 
-        // Fetch all reviews' emails (excluding nulls)
-        const reviews = await prisma.review.findMany({
-            where: {
-                email: { not: null }, // Ensure emails are not null
-            },
-            select: {
-                email: true, // Only fetch emails
-            },
-        });
+        /* ---------------- Fetch emails (RAW SQL) ---------------- */
+        const emailResult = await pool.query(`
+      SELECT email
+      FROM "Review"
+      WHERE email IS NOT NULL;
+    `);
 
-        // Check if there are any emails to send to
-        if (reviews.length === 0) {
-            console.error("No emails found");
+        if (emailResult.rows.length === 0) {
             return NextResponse.json(
                 { error: "No emails found" },
                 { status: 404 }
             );
         }
 
+        const emailList = emailResult.rows.map((row) => row.email).join(", ");
 
-        let projects = [];
-
+        /* ---------------- Fetch GitHub projects ---------------- */
+        let projects;
         try {
             projects = await fetchAllGithubProjects();
-
-            if (projects.length === 0) {
-                console.error("No projects found");
-                return NextResponse.json(
-                    { error: "No projects found" },
-                    { status: 404 }
-                );
-            }
-        }
-        catch (error) {
+        } catch (error) {
             console.error("Error fetching GitHub projects:", error);
             return NextResponse.json(
                 { error: "Failed to fetch GitHub projects" },
@@ -69,33 +54,31 @@ export async function POST() {
             );
         }
 
-        // get 5 random projects from the array
+        if (!projects || projects.length === 0) {
+            return NextResponse.json(
+                { error: "No projects found" },
+                { status: 404 }
+            );
+        }
+
         const randomProjects = projects
             .sort(() => 0.3 - Math.random())
             .slice(0, 3);
 
+        const emailTemplate = getEmailTemplate(randomProjects);
 
-        // Create a string of project links
-
-        console.log("Random Projects:", randomProjects);
-
-        const emailTemplate = getEmailTemplate(randomProjects); // Generate the email template
-
-        const emailList = reviews.map((review) => review.email).join(", "); // Join emails with commas for BCC
-
-        // Optional: verify transporter is ready
+        /* ---------------- Send email ---------------- */
         await transporter.verify();
 
-        const sender = `"Raunak" <raunak@hifromraunak.xyz>`; // Sender's name and email
+        const sender = `"Raunak" <raunak@hifromraunak.xyz>`;
 
-        // Send the email via BCC
         const info = await transporter.sendMail({
-            from: sender, // Sender's name as "Raunak"
-            to : sender,
-            bcc: emailList, // BCC all the collected emails
-            subject, // Hardcoded subject
-            html: emailTemplate, // Use the generated email template
-            text: message, // Hardcoded message content
+            from: sender,
+            to: sender, // required by Gmail
+            bcc: emailList, // actual recipients
+            subject,
+            html: emailTemplate,
+            text: message,
         });
 
         return NextResponse.json({
@@ -104,7 +87,7 @@ export async function POST() {
         });
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-        console.error("🔥 Mail send failed:", error.message || error);
+        console.error("🔥 Mail send failed:", error?.message || error);
         return NextResponse.json(
             { error: "Failed to send email" },
             { status: 500 }
