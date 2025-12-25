@@ -13,6 +13,26 @@ html {
   overscroll-behavior: none;
 }
 
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  animation: reveal 600ms ease-in-out forwards;
+}
+
+@keyframes reveal {
+  from {
+    clip-path: circle(0% at var(--vt-x) var(--vt-y));
+  }
+
+  to {
+    clip-path: circle(150% at var(--vt-x) var(--vt-y));
+  }
+}
+
 /* .vignette {
   position: fixed;
   top: 0;

@@ -9,20 +9,33 @@ import { Button } from "./ui/button";
 const Navbar = () => {
     const { theme, setTheme } = useTheme();
 
+    const toggleTheme = (e: React.MouseEvent<HTMLButtonElement>) => {
+        const x = e.clientX;
+        const y = e.clientY;
+
+        document.documentElement.style.setProperty("--vt-x", `${x}px`);
+        document.documentElement.style.setProperty("--vt-y", `${y}px`);
+
+        if (!document.startViewTransition) {
+            setTheme(theme === "light" ? "dark" : "light");
+            return;
+        }
+
+        document.startViewTransition(() => {
+            setTheme(theme === "light" ? "dark" : "light");
+        });
+    };
+
     return (
         <div className=" flex justify-between">
             <div className="flex md:flex-row flex-col gap-2">
                 <div className="flex items-center gap-2">
-                    <Button
-                        variant="outline"
-                        size="icon"
-                        onClick={() =>
-                            setTheme(theme === "light" ? "dark" : "light")
-                        }
-                    >
-                        <Sun className="h-[1.5rem] w-[1.3rem] dark:hidden" />
-                        <Moon className="hidden h-5 w-5 dark:block" />
-                        <span className="sr-only">Toggle theme</span>
+                    <Button variant="outline" size="icon" onClick={toggleTheme}>
+                        {theme === "light" ? (
+                            <Sun className="h-[1.5rem] w-[1.3rem]" />
+                        ) : (
+                            <Moon className="h-5 w-5" />
+                        )}
                     </Button>
 
                     <Button
