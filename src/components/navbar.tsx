@@ -75,7 +75,7 @@ const Navbar = () => {
             </div>
 
             <div>
-                <ul className="flex md:flex-row flex-col gap-2 items-center h-[93svh] md:h-full justify-end">
+                <ul className="flex md:flex-row flex-col gap-2 items-center h-[93dvh] md:h-full justify-end">
                     <li>
                         <Button variant="outline" asChild size="icon">
                             <a
