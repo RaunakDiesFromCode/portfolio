@@ -4,7 +4,6 @@ import TextReveal from "@/components/ui/text-reveal";
 import { Mouse } from "lucide-react";
 import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
 import { codeFont, highlightFont } from "@/app/fonts";
-// import Follower from "./spline/follower";
 
 const skills =
     "Web Android NextJS ReactJS CSS HTML5 NodeJS Prisma Postgres UI/UX Tailwind Typescript Javascript Java C C++ Python ML DSA Firebase DJango ".split(
