@@ -121,7 +121,7 @@ export function MarqueeDemo() {
     <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden pt-24" id="#reviews">
       <HeroText
         text="What they say..."
-        className="pointer-events-none z-50 mb-3 pb-8 whitespace-pre-wrap bg-foreground bg-clip-text text-center text-4xl md:text-9xl font-bold leading-none text-transparent"
+        className="pointer-events-none z-40 mb-3 pb-8 whitespace-pre-wrap bg-foreground bg-clip-text text-center text-4xl md:text-9xl font-bold leading-none text-transparent"
       />
       <div className={highlightFont.className}>
         {loading ? (
