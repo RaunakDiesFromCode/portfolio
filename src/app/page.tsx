@@ -13,7 +13,7 @@ const page = () => {
       <ScrollProgress/>
       <Stylized />
       <div className="flex flex-col items-center">
-        <About />
+        <About/>
         <Projects />
         <MarqueeDemo />
       </div>
