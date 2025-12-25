@@ -34,26 +34,17 @@ const SOCIALS = [
     },
 ];
 
-function getInstallCommand() {
-    const platform = navigator.platform.toLowerCase();
-    const userAgent = navigator.userAgent.toLowerCase();
+function getInstallCommand(platform: string | null) {
+    if (!platform) return "";
 
-    // Windows (including WSL edge cases)
-    if (platform.includes("win") || userAgent.includes("windows")) {
+    if (platform.includes("win")) {
         return "irm https://hifromraunak.vercel.app/run.ps1 | iex";
     }
 
-    // macOS
-    if (platform.includes("mac")) {
+    if (platform.includes("mac") || platform.includes("linux")) {
         return "sh <(curl -fsSL https://hifromraunak.vercel.app/run.sh)";
     }
 
-    // Linux
-    if (platform.includes("linux")) {
-        return "sh <(curl -fsSL https://hifromraunak.vercel.app/run.sh)";
-    }
-
-    // Fallback (unknown OS)
     return "Unsupported OS";
 }
 
@@ -61,6 +52,11 @@ export default function Navbar() {
     const { theme, setTheme } = useTheme();
     const [copied, setCopied] = useState(false);
     const [visible, setVisible] = useState(true);
+    const [platform, setPlatform] = React.useState<string | null>(null);
+
+    React.useEffect(() => {
+        setPlatform(navigator.platform.toLowerCase());
+    }, []);
 
     const toggleTheme = (e: React.MouseEvent<HTMLButtonElement>) => {
         document.documentElement.style.setProperty("--vt-x", `${e.clientX}px`);
@@ -148,7 +144,7 @@ export default function Navbar() {
 
                         <div className="flex items-center gap-2 rounded bg-background/80 border border-input/70 px-3 py-2 font-mono text-xs text-foreground">
                             <span className="truncate select-all">
-                                {getInstallCommand()}
+                                {platform && getInstallCommand(platform)}
                             </span>
 
                             <Button
@@ -157,7 +153,7 @@ export default function Navbar() {
                                 className="h-7 w-7 shrink-0"
                                 onClick={() => {
                                     navigator.clipboard.writeText(
-                                        getInstallCommand()
+                                        getInstallCommand(platform)
                                     );
                                     setCopied(true);
                                     setTimeout(() => setCopied(false), 2000);
