@@ -34,7 +34,7 @@ const About = () => {
   return (
     <div
       className={`relative flex md:h-screen md:w-full w-[80vw] flex-col items-center justify-center overflow-hidden mt-20 md:mt-0 ${highlightFont.className}`}
-      id="#about"
+      id="about"
     >
       <div className="z-20">
         <HeroText

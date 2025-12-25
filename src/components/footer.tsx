@@ -3,8 +3,9 @@ import React from "react";
 
 const Footer = () => {
     return (
-        <div className="text-center cursor-default bg-foreground text-background rounded-t-sm">
-            <div className="text-foreground/60 py-7 flex items-center justify-center">
+        <div className="text-center cursor-default bg-foreground text-background">
+            <div className="bg-background rounded-b-sm w-full h-5"></div>
+            <div className="text-foreground/60 pb-7 pt-4 flex items-center justify-center">
                 <h1 className="md:text-xl text-lg text-background">
                     Made with
                     <span className="hover:text-red-500 transition-colors duration-150 font-bold">

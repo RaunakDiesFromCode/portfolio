@@ -20,16 +20,16 @@ html {
 }
 
 ::view-transition-new(root) {
-  animation: theme-rise 900ms ease-in-out forwards;
+  animation: theme-rise 900ms ease-out forwards;
 }
 
 @keyframes theme-rise {
   from {
-    clip-path: circle(0% at 50% 100%);
+    clip-path: circle(0% at 50% 0%);
   }
 
   to {
-    clip-path: circle(150% at 50% 100%);
+    clip-path: circle(150% at 50% 0%);
   }
 }
 
