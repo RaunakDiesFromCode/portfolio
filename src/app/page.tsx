@@ -6,6 +6,9 @@ import Stylized from "@/components/Stylized";
 import Projects from "@/components/Projects";
 import { MarqueeDemo } from "@/components/Reviews";
 import ScrollProgress from "@/components/ui/scroll-progress";
+import Skills from "@/components/Skills";
+import Education from "@/components/Education";
+import Certifications from "@/components/Certifications";
 
 const page = () => {
   return (
@@ -13,8 +16,11 @@ const page = () => {
       <ScrollProgress/>
       <Stylized />
       <div className="flex flex-col items-center">
-        <About/>
+        <About />
+        <Education />
+        <Skills />
         <Projects />
+        <Certifications />
         <MarqueeDemo />
       </div>
     </div>

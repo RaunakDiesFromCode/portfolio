@@ -2,13 +2,8 @@ import React from "react";
 import HeroText from "@/components/HeroText";
 import TextReveal from "@/components/ui/text-reveal";
 import { Mouse } from "lucide-react";
-import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
-import { codeFont, highlightFont } from "@/app/fonts";
+import { codeFont} from "@/app/fonts";
 
-const skills =
-    "Web Android NextJS ReactJS CSS HTML5 NodeJS Prisma Postgres UI/UX Tailwind Typescript Javascript Java C C++ Python ML DSA Firebase DJango ".split(
-        " "
-    );
 
 const Stylized = () => {
     return (
@@ -30,19 +25,6 @@ const Stylized = () => {
             </div>
             <div className="z-10 flex min-h-64 justify-end w-full">
                 <TextReveal text="What i do defines me" />
-            </div>
-
-            <div className="opacity-50">
-                <VelocityScroll
-                    text={skills.sort(() => Math.random() - 0.5).join(" ")}
-                    default_velocity={1}
-                    className={`font-display text-center text-4xl font-bold tracking-[-0.02em] text-black drop-shadow-sm dark:text-white md:text-7xl md:leading-[5rem] ${highlightFont.className}`}
-                />
-                <VelocityScroll
-                    text={skills.sort(() => Math.random() - 0.5).join(" ")}
-                    default_velocity={1}
-                    className={`font-display text-center text-4xl italic font-bold tracking-[-0.02em] text-black drop-shadow-sm dark:text-white md:text-7xl md:leading-[5rem] ${codeFont.className}`}
-                />
             </div>
         </div>
     );
