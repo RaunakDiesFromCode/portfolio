@@ -6,25 +6,10 @@ import {
     X,
     Copy,
     Check,
-    Mail,
-    Github,
-    Linkedin,
-    Twitter,
-    Instagram,
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { useEffect } from "react";
 
-const SOCIALS = [
-    { href: "https://github.com/RaunakDiesFromCode", icon: Github },
-    { href: "https://www.linkedin.com/in/raunak-manna/", icon: Linkedin },
-    { href: "https://x.com/RaunakM298742", icon: Twitter },
-    { href: "https://www.instagram.com/har.jagah.raunak/", icon: Instagram },
-    {
-        href: "mailto:raunakmanna43@gmail.com?subject=I%20saw%20your%20portfolio",
-        icon: Mail,
-    },
-];
 
 export default function FloatingActions() {
     const [visible, setVisible] = useState(true);
@@ -48,18 +33,6 @@ export default function FloatingActions() {
 
     return (
         <>
-            {/* MOBILE SOCIAL STACK */}
-            <ul className="fixed bottom-4 right-4 z-40 flex flex-col gap-2 md:hidden">
-                {SOCIALS.map(({ href, icon: Icon }) => (
-                    <li key={href}>
-                        <Button variant="outline" size="icon" asChild>
-                            <a href={href} target="_blank" rel="noreferrer">
-                                <Icon className="h-4 w-4" />
-                            </a>
-                        </Button>
-                    </li>
-                ))}
-            </ul>
 
             {/* DESKTOP TERMINAL ACTION */}
             <div className="hidden md:flex fixed bottom-4 right-4 z-40 flex-col items-end gap-2">
