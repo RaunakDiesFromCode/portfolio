@@ -1,5 +1,5 @@
 import React from "react";
-import GradualSpacing from "./ui/gradual-spacing";
+import GradualSpacing from "./gradual-spacing";
 import { cn } from "@/lib/utils";
 import { heroFont } from "@/app/fonts";
 

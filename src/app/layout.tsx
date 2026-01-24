@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { highlightFont } from "./fonts";
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer";
 import { Toaster } from "sonner";
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/Navbar";
 import { Analytics } from "@vercel/analytics/react";
 import FloatingActions from "@/components/FloatingActions";
 

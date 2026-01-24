@@ -1,9 +1,8 @@
 import React from "react";
-import HeroText from "@/components/HeroText";
+import HeroText from "@/components/ui/HeroText";
 import TextReveal from "@/components/ui/text-reveal";
 import { Mouse } from "lucide-react";
-import { codeFont} from "@/app/fonts";
-
+import { codeFont } from "@/app/fonts";
 
 const Stylized = () => {
     return (
