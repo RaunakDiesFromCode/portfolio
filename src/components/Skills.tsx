@@ -3,32 +3,14 @@ import HeroText from "./ui/HeroText";
 import { codeFont } from "@/app/fonts";
 
 const SKILLS = {
-    Languages: [
-        "JavaScript & TypeScript",
-        "Python",
-        "Java",
-        "C",
-    ],
+    Languages: ["JavaScript & TypeScript", "Python", "Java", "C"],
 
-    Frontend: [
-        "React",
-        "Next.js",
-        "Tailwind CSS",
-    ],
+    Frontend: ["React", "Next.js", "Tailwind CSS"],
 
-    Backend: [
-        "Node.js",
-        "Express",
-        "FastAPI",
-    ],
+    Backend: ["Node.js", "Express", "FastAPI"],
 
-    'Databases & ORM': [
-        "PostgreSQL",
-        "MongoDB",
-        "Prisma",
-    ],
+    "Databases & ORM": ["PostgreSQL", "MongoDB", "Prisma"],
 };
-
 
 const Skills = () => {
     return (
@@ -42,7 +24,7 @@ const Skills = () => {
             />
 
             <div className="mt-12 w-full max-w-6xl">
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                     {Object.entries(SKILLS).map(([category, items]) => (
                         <div
                             key={category}
@@ -58,8 +40,9 @@ const Skills = () => {
                                 {items.map((skill) => (
                                     <li
                                         key={skill}
-                                        className="text-foreground/80 transition-colors group-hover:text-foreground"
+                                        className="flex items-center gap-2 text-foreground/80 transition-colors group-hover:text-foreground"
                                     >
+                                        <span className="h-1 w-1 rounded-full bg-muted-foreground/60" />
                                         {skill}
                                     </li>
                                 ))}
@@ -67,6 +50,10 @@ const Skills = () => {
                         </div>
                     ))}
                 </div>
+            </div>
+
+            <div className="mt-10 text-center text-sm text-muted-foreground">
+                Currently learning Rust
             </div>
         </section>
     );
