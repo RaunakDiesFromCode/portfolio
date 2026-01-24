@@ -1,33 +1,7 @@
 import React from "react";
 import HeroText from "./ui/HeroText";
 import { Timeline } from "./ui/Timeline";
-
-export const EDUCATION = [
-    {
-        id: "btech-cs",
-        period: "2023 – Present",
-        title: "Bachelor of Technology in Computer Science (Data Science)",
-        institution: "Future Institute of Engineering and Management, Sonarpur",
-        details:
-            "CGPA: 7.5 (Till 5th Semester). Relevant Coursework: Data Structures, Algorithms, Database Management Systems, Machine Learning, Artificial Intelligence.",
-    },
-    {
-        id: "higher-secondary",
-        period: "2020 – 2022",
-        title: "Higher Secondary Education",
-        institution: "The Assembly of God Church School, Tollygunge",
-        details:
-            "Percentage: 87%. Subjects: Physics, Chemistry, Mathematics, Computer Science, English",
-    },
-    {
-        id: "secondary",
-        period: "2018 – 2020",
-        title: "Secondary Education",
-        institution: "The Assembly of God Church School, Tollygunge",
-        details:
-            "Percentage: 89%. Subjects: English, Hindi, Mathematics, Science, Social Studies, Computer Applications",
-    },
-];
+import { EDUCATION } from "@/data/portfolio";
 
 const Education = () => {
     return (

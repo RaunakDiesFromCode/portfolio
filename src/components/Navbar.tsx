@@ -15,25 +15,23 @@ import {
 import { useTheme } from "next-themes";
 import { Button } from "./ui/button";
 import clsx from "clsx";
+import { SOCIALS } from "@/data/portfolio";
 
 const NAV_ITEMS = [
     { label: "Me", id: "about" },
     { label: "Education", id: "education" },
     { label: "Skills", id: "skills" },
     { label: "Projects", id: "projects" },
-    { label: "Certifications", id: "certifications" },
+    { label: "Achievements", id: "achievements" },
 ];
 
-const SOCIALS = [
-    { href: "https://github.com/RaunakDiesFromCode", icon: Github },
-    { href: "https://www.linkedin.com/in/raunak-manna/", icon: Linkedin },
-    { href: "https://x.com/RaunakM298742", icon: Twitter },
-    { href: "https://www.instagram.com/har.jagah.raunak/", icon: Instagram },
-    {
-        href: "mailto:raunakmanna43@gmail.com?subject=I%20saw%20your%20portfolio",
-        icon: Mail,
-    },
-];
+const ICONS = {
+    github: Github,
+    linkedin: Linkedin,
+    twitter: Twitter,
+    instagram: Instagram,
+    mail: Mail,
+} as const;
 
 export default function Navbar() {
     const { theme, setTheme } = useTheme();
@@ -103,20 +101,27 @@ export default function Navbar() {
 
                 {/* RIGHT (DESKTOP) */}
                 <ul className="hidden md:flex items-center gap-2">
-                    {SOCIALS.map(({ href, icon: Icon }) => (
-                        <li key={href}>
-                            <Button
-                                variant="outline"
-                                size="icon"
-                                asChild
-                                className="transition-transform active:scale-95"
-                            >
-                                <a href={href} target="_blank" rel="noreferrer">
-                                    <Icon className="h-4 w-4" />
-                                </a>
-                            </Button>
-                        </li>
-                    ))}
+                    {SOCIALS.map(({ href, icon }) => {
+                        const Icon = ICONS[icon];
+                        return (
+                            <li key={href}>
+                                <Button
+                                    variant="outline"
+                                    size="icon"
+                                    asChild
+                                    className="transition-transform active:scale-95"
+                                >
+                                    <a
+                                        href={href}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        <Icon className="h-4 w-4" />
+                                    </a>
+                                </Button>
+                            </li>
+                        );
+                    })}
                 </ul>
 
                 {/* MOBILE HAMBURGER */}
@@ -168,25 +173,28 @@ export default function Navbar() {
                     ))}
 
                     <div className="mt-6 flex gap-3 w-full justify-center">
-                        {SOCIALS.map(({ href, icon: Icon }, i) => (
-                            <a
-                                key={href}
-                                href={href}
-                                target="_blank"
-                                rel="noreferrer"
-                                style={{ transitionDelay: `${i * 40}ms` }}
-                                className={clsx(
-                                    "rounded-md border p-3",
-                                    "transition-all duration-300",
-                                    open
-                                        ? "scale-100 opacity-100"
-                                        : "scale-95 opacity-0",
-                                    "hover:bg-muted",
-                                )}
-                            >
-                                <Icon className="h-5 w-5" />
-                            </a>
-                        ))}
+                        {SOCIALS.map(({ href, icon }, i) => {
+                            const Icon = ICONS[icon];
+                            return (
+                                <a
+                                    key={href}
+                                    href={href}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    style={{ transitionDelay: `${i * 40}ms` }}
+                                    className={clsx(
+                                        "rounded-md border p-3",
+                                        "transition-all duration-300",
+                                        open
+                                            ? "scale-100 opacity-100"
+                                            : "scale-95 opacity-0",
+                                        "hover:bg-muted",
+                                    )}
+                                >
+                                    <Icon className="h-5 w-5" />
+                                </a>
+                            );
+                        })}
                     </div>
                 </div>
             </div>

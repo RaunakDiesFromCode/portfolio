@@ -6,66 +6,8 @@ import HeroText from "../ui/HeroText";
 import { highlightFont } from "@/app/fonts";
 import { ReviewDialog } from "./ReviewForm";
 import { Review } from "@/lib/types";
+import { OfflineReviews } from "@/data/portfolio";
 
-// Fallback offline reviews with unique IDs
-const OfflineReviews: Review[] = [
-    {
-        id: "offline-1",
-        name: "Sagnik",
-        contact: "@sagnifyofficial",
-        review: "I can do this in Django too. Lame.",
-        rating: 3,
-    },
-    {
-        id: "offline-2",
-        name: "Tautik",
-        contact: "@tautik_sinha",
-        review: "You guys will have fewer jobs. ChatGPT can do this.",
-        rating: 2,
-    },
-    {
-        id: "offline-3",
-        name: "Swagnik",
-        contact: "@swagnikganguly",
-        review: "Looks decent.",
-        rating: 4,
-    },
-    {
-        id: "offline-4",
-        name: "Sneha",
-        contact: "@susneha",
-        review: "I was paid to say this. But I love it.",
-        rating: 5,
-    },
-    {
-        id: "offline-5",
-        name: "A proud client",
-        contact: "@raunakisannoying",
-        review: "This guy is a genius. I love him.",
-        rating: 5,
-    },
-    {
-        id: "offline-6",
-        name: "Swarnabha",
-        contact: "@swarnabha19",
-        review: "Few people can do this. He is one of them.",
-        rating: 4,
-    },
-    {
-        id: "offline-7",
-        name: "Rishita",
-        contact: "@rix_04turtle",
-        review: "This guy codes as sharp as his jokes.",
-        rating: 4,
-    },
-    {
-        id: "offline-8",
-        name: "Bristi",
-        contact: "@sen_bristi_",
-        review: "His designs are so good, they make the internet look bad.",
-        rating: 5,
-    },
-];
 
 // Helper function to shuffle reviews
 function shuffleArray<T>(array: T[]): T[] {

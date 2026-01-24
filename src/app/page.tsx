@@ -8,7 +8,7 @@ import { MarqueeDemo } from "@/components/review/Reviews";
 import ScrollProgress from "@/components/ui/scroll-progress";
 import Skills from "@/components/Skills";
 import Education from "@/components/Education";
-import Certifications from "@/components/Certifications";
+import Achievements from "@/components/Achievements";
 
 const page = () => {
     return (
@@ -20,7 +20,7 @@ const page = () => {
                 <Education />
                 <Skills />
                 <Projects />
-                <Certifications />
+                <Achievements />
                 <MarqueeDemo />
             </div>
         </div>
